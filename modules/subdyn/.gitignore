@@ -1,4 +1,4 @@
-*.yaml
+*.sum.yaml
 *.json
 *.ech
 *.sum

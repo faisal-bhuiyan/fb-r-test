@@ -1,0 +1,25 @@
+# SubDyn Driver file for stand-alone applications 
+Echo: False                                 # Echo the input file data (flag). In order to write down the driver used for tracking purposes. The name will be according to OutRootName. For example: SubDyn_outputs.dvr.echo
+#---------------------- ENVIRONMENTAL CONDITIONS -------------------------------------------------
+Gravity: 9.8066                             # Gravity (m/s^2).
+WtrDpth: 0                                  # Water Depth (m) positive value.
+#---------------------- SubDyn -------------------------------------------------------------------
+SDInputFile: "SD_AnsysComp1_PinBeam.dat"    # It can be an absolute or relative path.  
+OutRootName: "SD_AnsysComp1_PinBeam"        # All the output files will have this name.
+NSteps: 10                                  # Number of time steps in the simulations (-).
+TimeInterval: 0.01                          # TimeInterval for the simulation (sec).
+TP_RefPoint: [0, 0, 0]                      # Location (x,y,z) of the TP reference point in global coordinates (m)
+SubRotateZ: 0                               # Rotation angle of the structure geometry in [deg] about the global Z axis. For example to orientate one jacket.   
+#---------------------- INPUTS -------------------------------------------------------------------
+InputsMod: 0                                # Inputs model {0: all inputs are zero for every timestep, 1: steady state inputs, 2: read inputs from a file (InputsFile) to reproduce a time-serie} (switch)
+InputsFile: "unused"                        # Name of the inputs file if InputsMod = 2.  
+#---------------------- STEADY INPUTS (for InputsMod = 1) ----------------------------------------
+uTPInSteady:    [0, 0, 0, 0, 0, 0]          # input displacements and rotations: ([m], [rad])  
+uDotTPInSteady: [0, 0, 0, 0, 0, 0]          # input translational and rotational velocities ([m/s], [rad/s])
+uDotTPInSteady: [0, 0, 0, 0, 0, 0]          # input translational and rotational accelerations([m/s^2], [rad/s^2])
+#---------------------- LOADS --------------------------------------------------------------------
+#ALJointID    Fx     Fy    Fz     Mx     My     Mz   UnsteadyFile
+#   (-)       (N)    (N)   (N)   (Nm)   (Nm)   (Nm)     (-)
+AppliedLoads:
+    - { ALJointID: 9, Fx: -5.31E7,  Fy: 0, Fz: 7.30E5, Mx: 0, My: 0, Mz: 0 }
+
