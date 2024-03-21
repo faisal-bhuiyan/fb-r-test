@@ -294,6 +294,18 @@ adilib.numMeshPts = np.size(initMeshPos_ar,0)
 adilib.initMeshPos    = initMeshPos_ar
 adilib.initMeshOrient = initMeshOrient_ar
 
+# assign first 1/3 of mesh points to blade 1, second 1/3 to blade 2, etc.
+adilib.meshPtToBladeNum = np.ones((adilib.numMeshPts),dtype=int)
+for n_pts in range(adilib.numMeshPts):
+    if n_pts < numBladeNode[0]:
+        adilib.meshPtToBladeNum[n_pts] = 1
+    elif n_pts < sum(numBladeNode[0:2]):
+        adilib.meshPtToBladeNum[n_pts] = 2
+    else:
+        adilib.meshPtToBladeNum[n_pts] = 3
+
+# adilib.meshPtToBladeNum = np.ones((adilib.numMeshPts),dtype=int)   # for now, assume all mesh points are on blade 1
+
 # ADI_PreInit: call before anything else
 try:
     adilib.adi_preinit()
