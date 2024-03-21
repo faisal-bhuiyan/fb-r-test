@@ -98,7 +98,7 @@ primary_ifw_file="ifw_primary.dat"
 #       velocities, and accelerations are passed in, and an array of
 #       Forces+Moments is returned.  For debugging, it may be useful to dump all
 #       off this to file.
-DbgOuts=1                       #   For checking the interface, set this to 1
+DbgOuts=0                       #   For checking the interface, set this to 1
 debugout_file="DbgOutputs.out"
 
 #   Output file
